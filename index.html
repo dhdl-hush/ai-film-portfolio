@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noimageindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d0d">
+  <meta name="description" content="AI 기반 영상 제작 포트폴리오 — 애니메이션, 광고, 시네마틱 및 콘셉트 영상 작업.">
+  <title>AI Film Portfolio · 2026</title>
+  <style>
+    :root { --bg:#0b0d0d;--panel:#121615;--panel2:#171b1a;--fg:#eeeee9;--soft:#cbcfc8;--muted:#8e9890;--subtle:#57605b;--line:rgba(235,240,229,.16);--accent:#d7e5c8;--serif:Georgia,'Times New Roman',serif;--sans:'Pretendard Variable','Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+    body.lock { overflow:hidden; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; cursor:pointer; }
+    button:focus-visible,a:focus-visible { outline:2px solid var(--accent);outline-offset:5px; }
+    ::selection { background:var(--accent);color:#141714; }
+    .container { width:min(1420px,calc(100% - 104px)); margin:0 auto; }
+    .mono { font-family:ui-monospace,'SFMono-Regular',Consolas,monospace; font-size:11px; letter-spacing:.13em; font-weight:500; }
+    .eyebrow { display:flex; align-items:center; gap:11px; text-transform:uppercase; color:var(--muted); }
+    .eyebrow::before { content:'';width:18px;height:1px;background:var(--accent);display:block; }
+    .muted { color:var(--muted); }
+    .quiet { color:var(--subtle); }
+    .site-header { position:absolute;top:0;left:0;right:0;z-index:10; border-bottom:1px solid rgba(255,255,255,.18); }
+    .nav { height:82px; display:flex;align-items:center;justify-content:space-between;gap:25px; }
+    .identity { display:inline-flex; align-items:center;gap:19px;flex-shrink:0; }
+    .identity-badge { width:40px;height:40px; border:1px solid rgba(255,255,255,.62);display:grid;place-items:center;border-radius:50%;font-family:var(--serif);font-size:17px;font-style:italic; }
+    .identity-word { font-size:13px;font-weight:780;letter-spacing:.2em;line-height:1.34; }
+    .identity-word small { display:block;color:#c1c6bf;font-size:9px;letter-spacing:.25em;font-weight:500;margin-top:6px; }
+    .nav-links { display:flex;align-items:center;gap:40px; }
+    .nav-links a { font-size:11px;letter-spacing:.14em;color:rgba(245,245,239,.85);transition:color .2s; }
+    .nav-links a:hover { color:white; }
+    .nav-end { display:flex;align-items:center;gap:20px; }
+    .nav-end .edition { color:rgba(245,245,239,.67);font-size:10px;letter-spacing:.15em; }
+    .top-cta { background:transparent;color:white;border:1px solid rgba(255,255,255,.45);padding:12px 17px;display:inline-flex;align-items:center;gap:24px;font-size:11px;letter-spacing:.03em;transition:.2s; }
+    .top-cta:hover { background:var(--fg);color:#101310; }
+    .top-cta span { font-size:16px; }
+    .hero { position:relative;min-height:760px;height:min(880px,100svh);overflow:hidden;display:flex;align-items:flex-end;background:#111b1b; }
+    .hero-image { position:absolute;inset:0;background:url('assets/images/mecha_main.webp') center 32%/cover no-repeat;transform:scale(1.02);animation:hero-drift 16s ease-out both; }
+    @keyframes hero-drift { from{transform:scale(1.08)}to{transform:scale(1.02)} }
+    .hero::before { content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,10,11,.94) 0%,rgba(6,10,11,.82) 33%,rgba(8,12,13,.25) 76%,rgba(6,10,10,.13) 100%),linear-gradient(0deg,rgba(7,10,10,.95) 0%,transparent 40%,rgba(8,10,10,.25) 100%); }
+    .hero::after { content:'';position:absolute;inset:0;pointer-events:none;z-index:1; background:radial-gradient(ellipse at 75% 53%,transparent 0%,rgba(5,8,8,.12) 75%); }
+    .hero-inner { z-index:2;position:relative;width:100%;padding:200px 0 99px;display:flex;flex-direction:column;justify-content:flex-end;gap:36px; }
+    .hero-overline {display:flex;align-items:center;gap:24px; color:#d1dbd0;}
+    .hero-overline .stripe { width:50px;height:1px;background:var(--accent); }
+    .hero h1 { font-size:clamp(62px,7.8vw,124px);letter-spacing:-.082em;line-height:1.05;font-weight:600;margin:0;max-width:1030px;word-break:keep-all; }
+    .hero h1 em { font-family:var(--serif);font-size:1.08em;letter-spacing:-.09em;font-weight:400; }
+    .hero-bottom { display:flex;align-items:flex-end;justify-content:space-between;gap:40px; }
+    .hero-desc { max-width:410px;font-size:15px;line-height:1.95;color:#d0d7cf;margin:0;word-break:keep-all; }
+    .hero-actions {display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:23px;}
+    .btn-white {border:1px solid var(--fg);background:var(--fg);color:#111514;display:inline-flex;align-items:center;justify-content:center;gap:54px;padding:17px 21px;font-size:12px;font-weight:700;transition:.2s;}
+    .btn-white:hover { background:var(--accent);border-color:var(--accent); }
+    .text-link {font-size:12px;border-bottom:1px solid rgba(255,255,255,.55);padding:12px 0; display:inline-flex;gap:16px;align-items:center;color:var(--fg);}
+    .scroll-tag {display:flex;gap:15px;align-items:center;color:#bbc7c0;writing-mode:vertical-rl;font-size:10px;letter-spacing:.18em;white-space:nowrap;}
+    .scroll-tag::after {content:'';width:1px;height:67px;background:#d2dbcf;}
+    .stats { border-bottom:1px solid var(--line); }
+    .stats-inner { min-height:115px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;align-items:center;gap:28px; }
+    .stats-intro { font-size:11px;line-height:1.85;color:var(--muted);letter-spacing:.08em; }
+    .stat { display:flex;align-items:baseline;gap:15px; }
+    .stat b { font-family:var(--serif);font-size:39px;line-height:1;font-weight:400; }
+    .stat span {font-size:10px;letter-spacing:.12em;color:var(--muted);}
+    section {scroll-margin-top:25px;}
+    .section-padding {padding-top:132px;padding-bottom:120px;}
+    .section-heading-row {display:flex;align-items:flex-start;justify-content:space-between;gap:28px;margin-bottom:42px; }
+    .section-index {font-size:11px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;}
+    .section-title {font-size:clamp(42px,5.3vw,75px);letter-spacing:-.065em;font-weight:500;line-height:1.12;margin:18px 0 0;}
+    .section-title em {font-family:var(--serif);font-weight:400;}
+    .section-description {max-width:340px;color:var(--muted);font-size:14px;line-height:1.95;margin:8px 0 0;word-break:keep-all;}
+    .featured-media { position:relative;width:100%;aspect-ratio:16/8.2;background:#182322;border:0;padding:0;display:block;overflow:hidden;text-align:left;color:#fff; }
+    .featured-media img { width:100%;height:100%;object-fit:cover;object-position:center 50%;filter:brightness(.87);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s; }
+    .featured-media:hover img {transform:scale(1.035);filter:brightness(1);}
+    .featured-media::after { content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(4,7,7,.8),transparent 37%),linear-gradient(90deg,rgba(4,7,7,.2),transparent 70%); }
+    .big-play {position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:91px;height:91px;border:1px solid rgba(255,255,255,.9);border-radius:50%;display:grid;place-items:center;z-index:2;backdrop-filter:blur(5px);background:rgba(255,255,255,.09);transition:.25s;}
+    .big-play svg {width:23px;height:23px;fill:#fff;transform:translateX(2px);}
+    .featured-media:hover .big-play {background:var(--fg);transform:translate(-50%,-50%) scale(1.07);}
+    .featured-media:hover .big-play svg { fill:#101512; }
+    .featured-meta { position:absolute;bottom:30px;left:35px;right:35px;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:30px; }
+    .featured-meta b {font-size:12px;font-weight:550;letter-spacing:.1em;}
+    .featured-meta span {font-size:11px;color:#cdd8cd;letter-spacing:.06em;}
+    .feature-info {display:grid;grid-template-columns:1.05fr 1fr;gap:80px;border-bottom:1px solid var(--line);padding:34px 0 45px;}
+    .feature-info p {font-size:16px;line-height:1.95;color:#c6ccc6;margin:0;word-break:keep-all;max-width:600px;}
+    .info-label {display:block;margin-bottom:15px;color:var(--muted);font-size:10px;letter-spacing:.14em;}
+    .tags {display:flex;gap:10px;flex-wrap:wrap;}
+    .tag {border:1px solid var(--line);padding:10px 14px;font-size:11px;color:#b5bfb8;}
+    .test-head {display:flex;align-items:baseline;justify-content:space-between;gap:30px;margin-top:66px;margin-bottom:23px;}
+    .test-head h3 {font-weight:500;font-size:26px;letter-spacing:-.04em;margin:0;}
+    .test-head p {font-size:12px;color:var(--muted);margin:0;}
+    .test-grid {display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+    .test-card {background:#141918;display:flex;align-items:stretch;text-align:left;border:1px solid var(--line);padding:0;color:inherit;overflow:hidden;transition:border-color .2s,background .2s;}
+    .test-card:hover {border-color:rgba(225,234,215,.7);background:#1c2320;}
+    .test-card img {width:45%;aspect-ratio:16/9;object-fit:cover;display:block;}
+    .test-card .test-desc {padding:24px 25px;display:flex;flex:1;flex-direction:column;justify-content:space-between;gap:15px;}
+    .test-desc small {font-size:10px;letter-spacing:.12em;color:var(--muted);}
+    .test-desc strong {font-weight:500;font-size:16px;display:block;letter-spacing:-.03em;}
+    .test-desc .card-bottom {display:flex;align-items:center;justify-content:space-between;}
+    .test-desc .card-bottom span:first-child {color:var(--muted);font-size:11px;}
+    .circle-arrow {width:33px;height:33px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-size:17px;flex-shrink:0;}
+    .works {background:#121615;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+    .project-grid {display:grid;grid-template-columns:1fr 1fr;gap:80px 24px;}
+    .work-card {min-width:0;}
+    .work-card:nth-child(2) {padding-top:118px;}
+    .work-card:nth-child(4) {padding-top:118px;}
+    .work-image {position:relative;display:block;aspect-ratio:16/10;overflow:hidden;width:100%;padding:0;border:0;background:#202523;color:#fff;}
+    .work-image img {display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .35s;filter:brightness(.94);}
+    .work-image:hover img {transform:scale(1.055);filter:brightness(1.07);}
+    .work-image::after {position:absolute;content:'';inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),transparent 40%,rgba(0,0,0,.43));pointer-events:none;}
+    .card-counter {position:absolute;left:24px;top:22px;z-index:1;background:rgba(10,16,13,.47);border:1px solid rgba(255,255,255,.25);padding:8px 10px;font-size:10px;letter-spacing:.1em;backdrop-filter:blur(6px);}
+    .play-corner {position:absolute;right:24px;bottom:22px;z-index:1;width:53px;height:53px;border-radius:50%;border:1px solid rgba(255,255,255,.82);display:grid;place-items:center;transition:.25s;}
+    .play-corner svg {width:15px;fill:white;transform:translateX(1px);}
+    .work-image:hover .play-corner {background:white;}
+    .work-image:hover .play-corner svg {fill:#101411;}
+    .work-line {display:flex;align-items:start;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding:23px 0 20px;}
+    .work-line h3 {font-size:27px;letter-spacing:-.055em;font-weight:500;margin:0 0 9px;}
+    .work-line p {margin:0;color:var(--muted);font-size:13px;line-height:1.85;word-break:keep-all;}
+    .work-line .type {font-size:10px;color:var(--muted);white-space:nowrap;padding-top:6px;letter-spacing:.07em;}
+    .variant {margin-top:20px;padding:13px;background:#1a201d;border:1px solid var(--line);display:flex;align-items:center;gap:18px;justify-content:space-between;}
+    .variant img {width:100px;aspect-ratio:16/9;object-fit:cover;display:block;}
+    .variant p {margin:0;flex:1;font-size:12px;color:#c8d0c5;line-height:1.75;}
+    .variant p span {display:block;color:var(--muted);font-size:10px;margin-bottom:2px;}
+    .variant button {flex-shrink:0;border:1px solid rgba(230,239,227,.35);background:transparent;color:#e5eee2;font-size:11px;padding:11px 12px;transition:.2s;}
+    .variant button:hover {background:#e5eee2;color:#101510;}
+    .approach {padding:140px 0 125px;}
+    .approach-top {display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:end;margin-bottom:80px;}
+    .approach-top .section-title {max-width:720px;}
+    .approach-top p {max-width:420px;justify-self:end;margin:0;font-size:15px;line-height:2;color:var(--muted);word-break:keep-all;}
+    .steps {display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+    .step {padding:28px 25px 39px 0;border-right:1px solid var(--line);}
+    .step + .step {padding-left:25px;}
+    .step:last-child {border:0;}
+    .step .num {font-family:var(--serif);font-size:36px;color:#78847a;font-weight:400;font-style:italic;}
+    .step h3 {font-size:18px;font-weight:500;margin:55px 0 13px;letter-spacing:-.025em;}
+    .step p {font-size:12px;line-height:1.9;color:var(--muted);max-width:225px;margin:0;word-break:keep-all;}
+    .tools {display:flex;justify-content:space-between;align-items:center;gap:28px;padding-top:55px;}
+    .tools .list {display:flex;flex-wrap:wrap;gap:24px 32px;color:#d2dbd1;font-size:13px;letter-spacing:.01em;}
+    .tools .list span:not(:last-child)::after {content:'•';padding-left:32px;color:#4b584e;}
+    .foot-banner {position:relative;background:#d9e1d3;color:#1a211c;padding:93px 0 100px;overflow:hidden;}
+    .foot-banner .inner {display:flex;align-items:end;justify-content:space-between;gap:30px;}
+    .foot-banner .over {font-size:11px;letter-spacing:.17em;}
+    .foot-banner h2 {font-size:clamp(43px,6.1vw,86px);font-weight:500;letter-spacing:-.07em;line-height:1.16;margin:18px 0 0;}
+    .foot-banner h2 em {font-family:var(--serif);font-weight:400;}
+    .foot-banner a {white-space:nowrap;font-size:12px;display:flex;gap:22px;align-items:center;border-bottom:1px solid #334139;padding-bottom:12px;}
+    footer {padding:32px 0 40px;}
+    .footer-inner {display:flex;justify-content:space-between;gap:22px;color:#869388;font-size:10px;letter-spacing:.12em;}
+    /* Native dialog player works even from an extracted local folder. */
+    dialog.player {position:fixed;margin:auto;width:min(1120px,calc(100vw - 52px));max-width:none;max-height:min(94vh,1080px);padding:0;border:1px solid #4b5750;color:#e9f0e8;background:#101513;box-shadow:0 45px 170px rgba(0,0,0,.8);overflow:hidden;}
+    dialog.player::backdrop {background:rgba(0,0,0,.86);backdrop-filter:blur(12px);}
+    .player-head {display:flex;justify-content:space-between;align-items:center;gap:20px;padding:21px 25px;border-bottom:1px solid rgba(255,255,255,.14);}
+    .player-kicker {font-size:10px;letter-spacing:.13em;color:#9faea2;margin-bottom:6px;}
+    .player-head h3 {font-size:18px;margin:0;font-weight:500;letter-spacing:-.035em;}
+    .close-player {width:38px;height:38px;border:1px solid rgba(255,255,255,.25);background:transparent;color:var(--fg);font-size:22px;line-height:1;}
+    .close-player:hover {background:#2b362d;}
+    .video-wrap {background:#050807;}
+    .video-wrap video {display:block;width:100%;height:auto;max-height:calc(94vh - 195px);aspect-ratio:16/9;background:#050807;object-fit:contain;}
+    .player-bottom {padding:15px 25px;display:flex;align-items:center;justify-content:space-between;gap:15px;color:var(--muted);font-size:11px;}
+    .player-nav {display:flex;gap:8px;}
+    .player-nav button {border:1px solid rgba(255,255,255,.2);color:var(--fg);background:transparent;padding:9px 14px;font-size:11px;}
+    .player-nav button:hover {background:#233026;}
+    .floating-index {position:fixed;right:26px;bottom:23px;z-index:8;border:1px solid rgba(235,240,229,.22);background:rgba(9,13,12,.88);color:#eef1e8;border-radius:99px;display:flex;align-items:center;gap:8px;padding:11px 16px;font-size:11px;backdrop-filter:blur(10px);opacity:0;pointer-events:none;transform:translateY(15px);transition:.25s;}
+    .floating-index.visible {opacity:1;pointer-events:auto;transform:translateY(0);}
+    .floating-index:hover {background:#253128;}
+    @media (max-width:1000px) {
+      .container{width:min(100% - 62px,1420px)}
+      .nav-links{gap:24px}
+      .hero{min-height:670px}
+      .hero h1{font-size:clamp(58px,9vw,95px)}
+      .feature-info{gap:35px}
+      .test-card img{width:40%}
+      .test-desc{padding:18px!important}
+      .work-card:nth-child(2),.work-card:nth-child(4){padding-top:60px}
+      .work-line h3{font-size:23px}
+    }
+    @media (max-width:720px) {
+      .container {width:calc(100% - 40px)}
+      .nav {height:70px}
+      .identity{gap:10px}
+      .identity-badge{width:35px;height:35px;font-size:15px}
+      .identity-word{font-size:11px}
+      .identity-word small{font-size:8px;margin-top:4px}
+      .nav-links,.edition{display:none}
+      .top-cta{padding:10px 12px;font-size:10px;gap:12px}
+      .hero {height:auto;min-height:760px;max-height:none;align-items:stretch;}
+      .hero-image {background-position:62% center;}
+      .hero::before{background:linear-gradient(0deg,rgba(5,9,9,.96) 0%,rgba(5,9,9,.75) 40%,rgba(6,10,10,.17) 100%),linear-gradient(90deg,rgba(5,9,9,.55),transparent)}
+      .hero-inner{padding:220px 0 75px;min-height:760px;justify-content:flex-end;gap:30px}
+      .hero h1{font-size:clamp(55px,12vw,78px);letter-spacing:-.085em}
+      .hero-desc{font-size:13px;line-height:1.95}
+      .hero-bottom{display:block}
+      .scroll-tag{display:none}
+      .btn-white{padding:15px 17px;gap:25px}
+      .hero-actions{margin-top:20px}
+      .stats-inner{padding:32px 0;grid-template-columns:1fr 1fr;gap:26px}
+      .stats-intro{font-size:10px}
+      .stat b{font-size:35px}
+      .stat span{font-size:9px}
+      .section-padding{padding-top:87px;padding-bottom:82px}
+      .section-heading-row{display:block;margin-bottom:27px}
+      .section-title{font-size:clamp(40px,10vw,57px)}
+      .section-description{max-width:100%;font-size:13px;margin-top:22px}
+      .featured-media{aspect-ratio:16/11}
+      .featured-media img{object-position:center center}
+      .big-play{width:67px;height:67px}
+      .big-play svg{width:20px}
+      .featured-meta{bottom:18px;left:18px;right:18px}
+      .featured-meta b,.featured-meta span{font-size:9px}
+      .feature-info{grid-template-columns:1fr;gap:30px;padding:25px 0 30px}
+      .feature-info p{font-size:14px}
+      .tag{font-size:10px;padding:8px 10px}
+      .test-head{display:block;margin-top:47px}
+      .test-head h3{font-size:24px}
+      .test-head p{font-size:11px;margin-top:10px}
+      .test-grid{grid-template-columns:1fr;gap:12px}
+      .test-card img{width:42%}
+      .test-desc strong{font-size:14px}
+      .test-desc small{font-size:9px}
+      .project-grid{grid-template-columns:1fr;gap:46px}
+      .work-card:nth-child(2),.work-card:nth-child(4){padding-top:0}
+      .work-image{aspect-ratio:16/10}
+      .work-line h3{font-size:24px}
+      .work-line p{font-size:12px}
+      .approach{padding:90px 0}
+      .approach-top{grid-template-columns:1fr;gap:25px;margin-bottom:38px}
+      .approach-top p{justify-self:start;font-size:13px}
+      .steps{grid-template-columns:1fr 1fr}
+      .step{padding:24px 18px 24px 0}
+      .step:nth-child(2){border-right:0;padding-left:19px}
+      .step:nth-child(3){border-top:1px solid var(--line)}
+      .step:nth-child(4){padding-left:19px;border-top:1px solid var(--line)}
+      .step h3{margin-top:32px;font-size:15px}
+      .step p{font-size:11px}
+      .tools{display:block;padding-top:34px}
+      .tools .list{margin-top:22px;gap:12px 14px;font-size:11px}
+      .tools .list span:not(:last-child)::after{padding-left:14px}
+      .foot-banner{padding:76px 0}
+      .foot-banner .inner{display:block}
+      .foot-banner h2{font-size:clamp(42px,10.2vw,65px)}
+      .foot-banner a{display:inline-flex;margin-top:35px}
+      .footer-inner{font-size:9px;flex-wrap:wrap}
+      dialog.player{width:calc(100vw - 22px)}
+      .player-head{padding:13px 13px}
+      .player-head h3{font-size:15px}
+      .video-wrap video{max-height:calc(92vh - 140px)}
+      .player-bottom{padding:12px 13px;flex-wrap:wrap}
+      .floating-index{right:15px;bottom:15px;font-size:10px}
+    }
+    @media (max-width:360px) {
+      .variant{display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px}
+      .variant img{width:76px}
+      .variant p{min-width:0}
+      .variant button{grid-column:2;justify-self:start}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-image{animation:none}.featured-media img,.work-image img{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="identity" href="#top" aria-label="맨 위로 이동">
+        <span class="identity-badge">F.</span>
+        <span class="identity-word">FILM PORTFOLIO<small>AI / IMAGE / MOTION</small></span>
+      </a>
+      <nav class="nav-links" aria-label="사이트 메뉴">
+        <a href="#featured">FEATURED</a><a href="#works">WORKS</a><a href="#approach">PROCESS</a>
+      </nav>
+      <div class="nav-end">
+        <span class="edition mono">2026 EDITION</span>
+        <a class="top-cta" href="#featured">작품 보기 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero" aria-label="포트폴리오 소개">
+      <div class="hero-image" role="img" aria-label="애니메이션 캐릭터의 공명 장면"></div>
+      <div class="container hero-inner">
+        <h1>AI 영상<br>포트폴리오</h1>
+        <div class="hero-bottom">
+          <div>
+            <div class="hero-actions">
+              <a class="btn-white" href="#featured">대표 프로젝트 보기 <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="#works">전체 작업 살펴보기 <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <span class="scroll-tag mono">SCROLL TO EXPLORE</span>
+        </div>
+      </div>
+    </section>
+    <div class="stats">
+      <div class="container stats-inner">
+        <div class="stats-intro mono">A SELECTION OF<br>VISUAL EXPERIMENTS & FILMS</div>
+        <div class="stat"><b>05</b><span>PROJECTS</span></div>
+        <div class="stat"><b>08</b><span>VIDEO CLIPS</span></div>
+        <div class="stat"><b>2026</b><span>ARCHIVE</span></div>
+      </div>
+    </div>
+    <section class="section-padding" id="featured" aria-label="대표 프로젝트">
+      <div class="container">
+        <div class="section-heading-row">
+          <div>
+            <span class="eyebrow mono">01 / FEATURED PROJECT</span>
+            <h2 class="section-title">메카 <em>애니메이션</em></h2>
+          </div>
+          <p class="section-description">훈련장 전투와 추격, 낯선 메카와의 조우를 하나의 흐름으로 연결한 애니메이션 샘플 작업입니다.</p>
+        </div>
+        <button type="button" class="featured-media" data-video="mecha_main" aria-label="메카 애니메이션 메인 영상 재생">
+          <img src="assets/images/mecha_main.webp" alt="공명하는 여주인공의 얼굴" fetchpriority="high">
+          <span class="big-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.8c0-.9 1-.9 1.6-.5l12 7.7c.7.5.7 1.5 0 2l-12 7.7C8 21 7 20.6 7 19.8z"/></svg></span>
+          <span class="featured-meta"><b>WATCH THE FILM ↗</b><span>ANIMATION / 00:43</span></span>
+        </button>
+        <div class="feature-info">
+          <div>
+            <span class="info-label mono">PROJECT OVERVIEW</span>
+            <p>아카데미의 메카 전투에서 시작해, 경비에게 발각된 주인공이 숲을 지나 가동 중지된 메카와 마주하는 이야기.</p>
+          </div>
+          <div>
+            <span class="info-label mono">PRODUCTION FOCUS</span>
+            <div class="tags"><span class="tag">시퀀스 기획</span><span class="tag">캐릭터·메카 시트</span><span class="tag">카메라 동선</span><span class="tag">장면 연결</span><span class="tag">이펙트 연출</span></div>
+          </div>
+        </div>
+        <div class="test-head">
+          <h3>추가 연출 테스트 <span class="quiet" style="font-family:var(--serif);font-style:italic;font-weight:400">/ 02 clips</span></h3>
+          <p>메인 영상과 별도로 제작한 메카 장면의 시안입니다.</p>
+        </div>
+        <div class="test-grid">
+          <button type="button" class="test-card" data-video="mecha_zoom" aria-label="메카 줌아웃 연출 테스트 재생">
+            <img src="assets/images/mecha_zoom.webp" alt="여주인공 뒤로 메카의 전신이 보이는 장면" loading="lazy">
+            <span class="test-desc"><small class="mono">TEST CLIP 01 / 00:05</small><strong>메카 줌아웃 · 공간 공개</strong><span class="card-bottom"><span>별도 연출 시안</span><span class="circle-arrow">↗</span></span></span>
+          </button>
+          <button type="button" class="test-card" data-video="mecha_eyes" aria-label="메카 붉은 눈 점등 연출 테스트 재생">
+            <img src="assets/images/mecha_eyes.webp" alt="붉은 눈이 점등된 메카" loading="lazy">
+            <span class="test-desc"><small class="mono">TEST CLIP 02 / 00:04</small><strong>메카 각성 · 눈 점등</strong><span class="card-bottom"><span>별도 엔딩 시안</span><span class="circle-arrow">↗</span></span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section id="works" class="works section-padding" aria-label="다른 영상 작업">
+      <div class="container">
+        <div class="section-heading-row" style="margin-bottom:65px">
+          <div><span class="eyebrow mono">02 / SELECTED WORKS</span><h2 class="section-title">다른 <em>작업들</em></h2></div>
+        </div>
+        <div class="project-grid">
+          <article class="work-card">
+            <button class="work-image" type="button" data-video="fragrance_main" aria-label="향수 광고 영상 재생"><img src="assets/images/fragrance_main.webp" alt="향수병을 들고 향수를 뿌리는 인물" loading="lazy"><span class="card-counter mono">02 / BRAND FILM</span><span class="play-corner" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.8c0-.9 1-.9 1.6-.5l12 7.7c.7.5.7 1.5 0 2l-12 7.7C8 21 7 20.6 7 19.8z"/></svg></span></button>
+            <div class="work-line"><div><h3>향수 광고</h3><p>저채도 화면, 건축적 공간, 자연 소재를 결합한 향수 브랜드 콘셉트 필름.</p></div><span class="type mono">00:15</span></div>
+            <div class="variant"><img src="assets/images/fragrance_alt.webp" alt="향수병을 만지는 인물 장면" loading="lazy"><p><span class="mono">ADDITIONAL VERSION</span>향수 광고 · 다른 편집 시안</p><button type="button" data-video="fragrance_alt">시안 재생 ↗</button></div>
+          </article>
+          <article class="work-card">
+            <button class="work-image" type="button" data-video="horror" aria-label="공포 공익광고 영상 재생"><img src="assets/images/horror.webp" alt="어두운 아파트 복도와 벽에 나타난 얼굴 형체" loading="lazy"><span class="card-counter mono">03 / CONCEPT FILM</span><span class="play-corner" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.8c0-.9 1-.9 1.6-.5l12 7.7c.7.5.7 1.5 0 2l-12 7.7C8 21 7 20.6 7 19.8z"/></svg></span></button>
+            <div class="work-line"><div><h3>공포 공익광고</h3><p>익숙한 생활 수칙 안내 화면에 이상 현상을 삽입한 아날로그 호러 콘셉트.</p></div><span class="type mono">00:15</span></div>
+          </article>
+          <article class="work-card">
+            <button class="work-image" type="button" data-video="teen" aria-label="하이틴 콜라주 영상 재생"><img src="assets/images/teen.webp" alt="분홍색 방의 금발 여성과 콜라주 그래픽" loading="lazy"><span class="card-counter mono">04 / VISUAL EXPERIMENT</span><span class="play-corner" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.8c0-.9 1-.9 1.6-.5l12 7.7c.7.5.7 1.5 0 2l-12 7.7C8 21 7 20.6 7 19.8z"/></svg></span></button>
+            <div class="work-line"><div><h3>하이틴 콜라주</h3><p>인물 컷과 프레임 그래픽을 조합한 밝고 장난스러운 하이틴 무드 영상.</p></div><span class="type mono">00:15</span></div>
+          </article>
+          <article class="work-card">
+            <button class="work-image" type="button" data-video="ballroom" aria-label="무도회 시네마틱 영상 재생"><img src="assets/images/ballroom.webp" alt="수많은 샹들리에가 반짝이는 무도회장" loading="lazy"><span class="card-counter mono">05 / CINEMATIC STUDY</span><span class="play-corner" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.8c0-.9 1-.9 1.6-.5l12 7.7c.7.5.7 1.5 0 2l-12 7.7C8 21 7 20.6 7 19.8z"/></svg></span></button>
+            <div class="work-line"><div><h3>무도회 시네마틱</h3><p>군중, 샹들리에, 인물의 감정선으로 고전적인 무도회 장면을 구현한 실험.</p></div><span class="type mono">00:15</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="approach" id="approach" aria-label="제작 과정">
+      <div class="container">
+        <span class="eyebrow mono">03 / HOW I WORK</span>
+        <div class="approach-top">
+          <h2 class="section-title">제작 과정</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="num">01</span><h3>기획과 장면 구성</h3><p>작품의 톤과 흐름, 보여줄 장면을 먼저 정리합니다.</p></div>
+          <div class="step"><span class="num">02</span><h3>키이미지 제작</h3><p>인물·공간·구도의 기준이 되는 이미지를 구체화합니다.</p></div>
+          <div class="step"><span class="num">03</span><h3>모션과 카메라</h3><p>인물 동작, 카메라의 위치와 움직임을 반복해서 조정합니다.</p></div>
+          <div class="step"><span class="num">04</span><h3>편집과 완성</h3><p>리듬과 연결성을 기준으로 컷을 배열하고 다듬습니다.</p></div>
+        </div>
+        <div class="tools"><span class="mono muted">TOOLS & WORKFLOW</span><div class="list"><span>Midjourney</span><span>Newtake</span><span>Photoshop</span><span>Premiere Pro</span></div></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><span>© 2026 · AI FILM PORTFOLIO</span><span>ANIMATION / BRAND FILM / VISUAL EXPERIMENT</span></div></footer>
+  <a class="floating-index" id="floatTop" href="#top">↑ 맨 위로</a>
+  <dialog class="player" id="playerDialog" aria-labelledby="playerTitle">
+    <div class="player-head"><div><div class="player-kicker mono" id="playerGroup">SELECTED FILM</div><h3 id="playerTitle">영상 재생</h3></div><button type="button" class="close-player" id="closePlayer" aria-label="영상 닫기">×</button></div>
+    <div class="video-wrap"><video id="videoPlayer" controls playsinline preload="metadata" controlsList="nodownload" aria-label="선택한 작품 영상"></video></div>
+    <div class="player-bottom"><span id="playerNote">마우스 또는 키보드로 재생할 수 있습니다.</span><div class="player-nav"><button type="button" id="prevVideo" aria-label="이전 영상">← 이전</button><button type="button" id="nextVideo" aria-label="다음 영상">다음 →</button></div></div>
+  </dialog>
+  <script>
+    (()=>{
+      'use strict';
+      const mediaBase='assets/video/';
+      const posterBase='assets/images/';
+      const clips=[
+        {id:'mecha_main',title:'메카 애니메이션',group:'ANIMATION · MAIN FILM',note:'43초 · 메인 애니메이션'},
+        {id:'mecha_zoom',title:'메카 줌아웃 · 공간 공개',group:'ANIMATION · TEST CLIP 01',note:'5초 · 추가 연출 시안'},
+        {id:'mecha_eyes',title:'메카 각성 · 눈 점등',group:'ANIMATION · TEST CLIP 02',note:'4초 · 엔딩 시안'},
+        {id:'fragrance_main',title:'향수 광고',group:'BRAND FILM',note:'15초 · 메인 버전'},
+        {id:'fragrance_alt',title:'향수 광고 · 다른 편집 시안',group:'BRAND FILM · ADDITIONAL VERSION',note:'15초 · 추가 시안'},
+        {id:'horror',title:'공포 공익광고',group:'CONCEPT FILM',note:'15초 · 아날로그 호러'},
+        {id:'teen',title:'하이틴 콜라주',group:'VISUAL EXPERIMENT',note:'15초 · 콜라주 스타일'},
+        {id:'ballroom',title:'무도회 시네마틱',group:'CINEMATIC STUDY',note:'15초 · 무도회 연출'}
+      ];
+      let current=0;
+      const dialog=document.getElementById('playerDialog');
+      const video=document.getElementById('videoPlayer');
+      const title=document.getElementById('playerTitle');
+      const group=document.getElementById('playerGroup');
+      const note=document.getElementById('playerNote');
+      const prev=document.getElementById('prevVideo');
+      const next=document.getElementById('nextVideo');
+      function setClip(index){
+        current=(index+clips.length)%clips.length;
+        const clip=clips[current];
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+        title.textContent=clip.title;
+        group.textContent=clip.group;
+        note.textContent=clip.note+' · ← → 키로 다음/이전 영상';
+        video.poster=posterBase+clip.id+'.webp';
+        video.src=mediaBase+clip.id+'.mp4';
+        video.load();
+        const promise=video.play();
+        if(promise && promise.catch) promise.catch(()=>{});
+      }
+      function show(id){
+        const index=clips.findIndex(c=>c.id===id);
+        if(index<0)return;
+        if(!dialog.open){dialog.showModal();document.body.classList.add('lock');}
+        setClip(index);
+      }
+      function close(){ if(dialog.open)dialog.close(); }
+      document.querySelectorAll('[data-video]').forEach(el=>el.addEventListener('click',()=>show(el.dataset.video)));
+      document.getElementById('closePlayer').addEventListener('click',close);
+      dialog.addEventListener('click',ev=>{if(ev.target===dialog)close()});
+      dialog.addEventListener('close',()=>{
+        video.pause();video.removeAttribute('src');video.load();document.body.classList.remove('lock');
+      });
+      prev.addEventListener('click',()=>setClip(current-1));
+      next.addEventListener('click',()=>setClip(current+1));
+      document.addEventListener('keydown',ev=>{
+        if(!dialog.open)return;
+        if(ev.key==='ArrowRight'){ev.preventDefault();setClip(current+1)}
+        if(ev.key==='ArrowLeft'){ev.preventDefault();setClip(current-1)}
+      });
+      const float=document.getElementById('floatTop');
+      let ticking=false;
+      window.addEventListener('scroll',()=>{
+        if(ticking)return;ticking=true;
+        requestAnimationFrame(()=>{float.classList.toggle('visible',window.scrollY>750);ticking=false;});
+      },{passive:true});
+    })();
+  </script>
+</body>
+</html>
